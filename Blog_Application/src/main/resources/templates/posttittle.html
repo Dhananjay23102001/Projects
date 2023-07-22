@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Blogify</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        .ptable{
+            margin-top: 20px;
+        }
+         .nav-item {
+            font-size: 20px;
+            padding-left: 20px;
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: bold;
+            
+        }
+        .t{
+        font-size:20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <div>
+                <img src="images/Blogify1.png" alt="Blogify Logo">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/addpost">Add Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/viewpost">View Post</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/postcomment">View Comments</a>
+                    </li>
+                     <li class="nav-item">
+                        <button class="btn btn-outline-danger" > <a class="nav-link" href="/logout">Logout</a></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+       
+        <h4 th:text="${msg}" class="text-danger"></h4>
+        <table class="table table-striped table-bordered">
+    <thead class="table-dark t">
+        <tr>
+            <th>Sr. No</th>
+            <th>Post Title</th>
+        </tr>
+    </thead>
+    <tbody class="t">
+        <tr th:each="post:${allPost}">
+            <td th:text="${postStat.index + 1}"></td>
+            <td>
+                <a th:href="@{/comment/{postId}(postId=${post.postId})}" th:text="${post.title}"></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+        
+           
+    </div>
+
+    <!-- Add Bootstrap JS (optional if you need to use Bootstrap's JavaScript components) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+
+<head>
+    <title>Registration Form</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+            margin-top: 100px;
+            background-color: #000;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            background-color: #000;
+            color: #fff;
+            border-color: #fff;
+        }
+
+        .btn-register {
+            background-color: #fff;
+            color: #000;
+            border: none;
+        }
+
+        .btn-register:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .btn-login {
+            background-color: transparent;
+            color: #fff;
+            border: none;
+            text-decoration: underline;
+        }
+
+        .btn-login:hover {
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">Registration Form</h2>
+        <P th:text="${sucessMsg}" class="text-success">
+					<P th:text="${errorMsg}" class="text-danger">
+					<form th:action="@{/reg}" th:object="${regform}" method="POST">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" th:field="*{userFirstName}"  class="form-control" id="firstName" placeholder="Enter your first name" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" th:field="*{userLastName}" class="form-control" id="lastName" placeholder="Enter your last name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" th:field="*{userEmail}" class="form-control" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password"  th:field="*{userPwd}" class="form-control" id="password" placeholder="Enter your password" required>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-register btn-block">Register</button>
+                <p class="mt-3 mb-0">Already have an account? <a href="login" class="btn-login">Login here</a></p>
+            </div>
+        </form>
+    </div>
+
+    <!-- Add Bootstrap JS (optional if you need to use Bootstrap's JavaScript components) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

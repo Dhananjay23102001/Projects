@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Blogify</title>
+<!-- Add Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+.ptable {
+	margin-top: 20px;
+}
+
+.nav-item {
+	font-size: 20px;
+	padding-left: 200px;
+}
+
+.navbar-nav .nav-link {
+	font-weight: bold;
+}
+
+.margin {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.comment-form {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #f9f9f9;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* CSS for form inputs and button */
+.comment-form input[type="text"], .comment-form input[type="email"],
+	.comment-form textarea {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	resize: none;
+}
+
+.comment-form button[type="submit"] {
+	padding: 10px 20px;
+	background-color: #4caf50;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.comment-form button[type="submit"]:hover {
+	background-color: #45a049;
+}
+
+.d1 {
+	margin-top: 70px;
+	margin-bottom: 70px;
+}
+</style>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-end"
+				id="navbarNav">
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link" href="/">Post</a></li>
+
+					<li class="nav-item"><a class="nav-link" href="/reg">Create
+							Post</a></li>
+					<li class="nav-item">
+						<button class="btn btn-outline-primary">
+							<a class="nav-link " href="login">Login</a>
+						</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+
+		<h1 class="margin text-center" th:text="${post.title}"></h1>
+		<p th:utext="${post.content}"></p>
+
+		<h2 class="text-center">Comments:</h2>
+		<hr
+			style="width: 75px; height: 2px; border-width: 0; color: gray; background-color: gray">
+		<br>
+		<div>
+			<div th:each="comment : ${post.comments}">
+				<tr>
+					<h5>
+						Name:
+						<p th:text="${comment.name}"></p>
+					</h5>
+				</tr>
+				<h5>
+					Date:
+					<p th:text="${comment.createdOn}"></p>
+				</h5>
+				<h4>
+					Comment:
+
+					<p th:text="${comment.content}"></p>
+				</h4>
+				<hr
+					style="height: 2px; border-width: 0; color: gray; background-color: gray">
+			</div>
+		</div>
+		<div class="comment-form d1">
+			<h2>Leave a Comment</h2>
+
+			<form th:action="@{/post/{postId}/comment(postId=${post.postId})}"
+				th:object="${commentBind}" method="post">
+				<div class="form-group">
+					<label>Enter Name</label> <input type="text" name="name"
+						class="form-control">
+				</div>
+
+				<div class="form-group">
+					<label>Enter email</label> <input type="text" name="email"
+						class="form-control">
+				</div>
+
+				<div class="form-group">
+					<textarea name="content" rows="4" cols="50" class="form-control"></textarea>
+				</div>
+				<br>
+				<button type="submit" class="btn btn-primary">Add Comment</button>
+
+			</form>
+		</div>
+
+		<!-- 
+        <P th:text="${sucessMsg}" class="text-success">
+      <P th:text="${errorMsg}" class="text-danger">
+        <div class="form-group">
+       
+          <label for="name">Name:</label>
+          <input type="text" th:field="*{commentBind.name}" class="form-control" id="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" th:field="*{commentBind.email}" class="form-control" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="comment">Comment:</label>
+          <textarea  th:field="*{commentBind.content}" class="form-control" id="comment" rows="5" placeholder="Enter your comment" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>  -->
+
+
+	</div>
+
+	</div>
+
+	<!-- Add Bootstrap JS (optional if you need to use Bootstrap's JavaScript components) -->
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

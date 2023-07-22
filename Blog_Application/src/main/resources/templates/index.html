@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Blogify</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        .ptable{
+            margin-top: 20px;
+        }
+         .nav-item {
+            font-size: 20px;
+            padding-left: 20px;
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: bold;
+        }
+        /* CSS for the card container */
+        .card {
+            width: 70%;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        /* CSS for the title */
+        .card h2 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        /* CSS for the date */
+        .card p.date {
+            color: #fff;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        /* CSS for the content */
+        .card p.content {
+            color: #fff;
+            font-size: 16px;
+        }
+         footer {
+            background-color: black;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+            color: #fff;
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <div>
+                <img src="images/Blogify1.png" alt="Blogify Logo">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                 <ul class="navbar-nav">
+                    <li class="nav-item w">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reg">Create Post</a>
+                    </li>
+                    <li class="nav-item">
+                       <button class="btn btn-outline-primary" ><a class="nav-link " href="login">Login</a></button> 
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+        <h2 class="text-center ptable">Welcome To Blogify!</h2>
+   <div>
+        <div th:each="post : ${posts}" class="card">
+            <h3><a th:href="@{/post/{postId}(postId=${post.postId})}" th:text="${post.title}"></a></h3>
+            <h4 th:text="${post.updatedOn}"></h4>
+            <hr>
+            <h5 th:utext="${post.description}"></h5>
+        </div>
+    </div>
+ <footer>
+        <p>&copy; 2023 Blogify. All rights reserved.</p>
+    </footer>
+
+    <!-- Add Bootstrap JS (optional if you need to use Bootstrap's JavaScript components) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
