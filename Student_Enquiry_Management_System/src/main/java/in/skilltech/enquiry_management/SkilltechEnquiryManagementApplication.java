@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FrontOfficeTeamPortalProjectApplication {
+public class SkilltechEnquiryManagementApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FrontOfficeTeamPortalProjectApplication.class, args);
+		SpringApplication.run(SkilltechEnquiryManagementApplication.class, args);
 	}
 
 }
