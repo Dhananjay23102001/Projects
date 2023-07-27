@@ -24,12 +24,6 @@ public class CommentServiceImpl implements CommentService {
 
 		BeanUtils.copyProperties(commentBind, entity);
 
-//		Integer postId = (Integer) httpSession.getAttribute("post_id");
-//
-//		PostEntity postEntity = postDataRepo.findById(postId).get();
-//
-//		entity.setPost(postEntity);
-
 		commentRepo.save(entity);
 
 		return true;
