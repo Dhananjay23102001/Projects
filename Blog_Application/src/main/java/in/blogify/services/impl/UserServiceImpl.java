@@ -49,7 +49,6 @@ public class UserServiceImpl implements UserServices {
 
 		BeanUtils.copyProperties(regForm, entity);
 
-		// Encode the password
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String encodedPassword = passwordEncoder.encode(regForm.getUserPwd());
 
