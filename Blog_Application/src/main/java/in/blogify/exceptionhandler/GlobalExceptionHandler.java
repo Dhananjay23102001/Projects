@@ -10,16 +10,12 @@ public class GlobalExceptionHandler {
 	
 	  @ExceptionHandler(Exception.class)
 	    public String handleException(Exception ex, Model model) {
-	        // Perform exception handling logic here
-	        // You can log the exception, display an error message, etc.
-
 	        model.addAttribute("errorMessage", "An unexpected error occurred. Please try again later.");
-	        return "error-page"; // Specify the name of your custom error page
+	        return "error-page"; 
 	    }
 	  
 	  @ExceptionHandler(NullPointerException.class)
 	    public String handleNullPointerException(NullPointerException ex, Model model) {
-	        // Perform exception handling logic for NullPointerException
 	       
 		  String message = ex.getMessage();
 		  
