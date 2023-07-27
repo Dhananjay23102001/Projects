@@ -35,10 +35,6 @@ public class IndexController {
 	@GetMapping("/post/{postId}")
 	public String loadParticularViewPage(@PathVariable Integer postId, Model model) {
 
-		// Object nullObject = null;
-		// Accessing a member or invoking a method on nullObject
-		// nullObject.toString();
-
 		Optional<PostEntity> findById = postDataRepo.findById(postId);
 
 		if (findById.isPresent()) {
