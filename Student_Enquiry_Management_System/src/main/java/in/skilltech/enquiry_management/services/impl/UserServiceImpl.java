@@ -30,7 +30,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean signUp(SignupForm form) {
-		// Copy data obj from binding to entity
 
 		AitUserDetails email = repo.findByUserEmail(form.getUserEmail());
 		AitUserDetails phono = repo.findByUserPhonNo(form.getUserPhonNo());
@@ -43,25 +42,19 @@ public class UserServiceImpl implements UserService {
 		AitUserDetails entity = new AitUserDetails();
 		BeanUtils.copyProperties(form, entity);
 
-		// Generate random password
 
 		String tempPwd = PwdUtils.generateRandomPwd();
 		entity.setPassWord(tempPwd);
 
-		// Set Account by default locked
 		entity.setAccStatus("Locked");
 
-		// Insert data
 		repo.save(entity);
 
-		// Send temp pwd to email
 
 		String to = form.getUserEmail();
 
 		String subject = AppConstant.EMAIL_UNL_MSG;
 
-		// String preExistingString = "Hello, ";
-		// StringBuilder greeting = new StringBuilder(preExistingString);
 
 		StringBuilder body = new StringBuilder("");
 
