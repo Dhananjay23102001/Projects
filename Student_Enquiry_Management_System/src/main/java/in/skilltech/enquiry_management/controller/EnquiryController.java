@@ -43,9 +43,6 @@ public class EnquiryController {
 	@GetMapping("/dashboard")
 	public String dashboard(Model model) {
 		
-//		Object nullObject = null;
-//        // Accessing a member or invoking a method on nullObject
-//        nullObject.toString();
 
 		Integer userId = (Integer) session.getAttribute("userId");
 
