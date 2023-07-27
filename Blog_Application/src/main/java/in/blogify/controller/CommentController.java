@@ -57,9 +57,6 @@ public class CommentController {
 	@GetMapping("/postcomment")
 	public String retrivePostTittle(Model model) {
 		
-//		Object nullObject = null;
-//		
-//		 nullObject.toString();
 
 		List<PostEntity> loadData = postDataService.loadData();
 
@@ -88,64 +85,3 @@ public class CommentController {
 
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-//@PostMapping("/post/{postId}/comment")
-//public String addComment(@PathVariable Integer postId,@ModelAttribute("commentBind") CommentBind commentBind) {
-//	Optional<PostEntity> findById = postDataRepo.findById(postId);
-//	if(findById.isPresent()) {
-//		PostEntity postEntity = findById.get();
-//		
-//		CommentEntity entity = new CommentEntity();
-//
-//		BeanUtils.copyProperties(commentBind, entity);
-//		
-//		entity.setPost(postEntity);
-//		
-//		commentRepo.save(entity);
-//		
-//		return "redirect:/Particularpost/" + postId;
-//		
-//	}
-
-//	return null;
-
-//@GetMapping("/post/{postId}/comment")
-//public String loadCmt(Model model) {
-//	
-//	model.addAttribute("commentBind", new CommentBind());
-//
-//	return "Particularpost";
-//}
-//
-
-//@PostMapping("/comment")
-//public String saveCmt(@ModelAttribute("commentBind") CommentBind commentBind,Model model) {
-//	
-//	boolean saveAllComments = commentService.saveAllComments(commentBind);
-//	
-//	if (saveAllComments) {
-//
-//		model.addAttribute("sucessMsg", "Comment Saved");
-//	} else {
-//		model.addAttribute("errorMsg", "Error Occured");
-//	}
-//	
-//	return "Comment";
-//			
-//}
-
-//@PostMapping("/post/{postId}/comment")
-//public String addComment(@PathVariable Long postId, @RequestParam("content") String content) {
-//    Optional<Post> optionalPost = postRepository.findById(postId);
-//    if (optionalPost.isPresent()) {
-//        Post post = optionalPost.get();
-//        Comment comment = new Comment();
-//        comment.setContent(content);
-//        comment.setPost(post);
-//        commentRepository.save(comment);
-//        return "redirect:/post/" + postId;
-//    }
-//    return "error";
-//}
