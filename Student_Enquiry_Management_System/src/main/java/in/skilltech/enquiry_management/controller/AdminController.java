@@ -79,46 +79,4 @@ public class AdminController {
 
 	}
 
-//	@GetMapping("/adminlogin")
-//	public String login(@RequestParam("userEmail") String userEmail, @RequestParam("passWord") String passWord, Model model) {
-//	    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//	    
-//	    AitUserDetails result = userDtlsRepo.findByUserEmailAndPassWord(userEmail, passWord);
-//	    
-//	    if (result != null && passwordEncoder.matches(passWord, result.getPassWord())) {
-//	        session.setAttribute("userId", result.getUserId());
-//	       
-//	    } else {
-//	        // Invalid login
-//	        // You can handle the invalid login scenario here
-//	        
-//	    }
-//	    return "redirect:/dashboard";
-//	}
-
-//	@GetMapping("/loginn")
-//	public String loginPagee(Model model) {
-//
-//		model.addAttribute("login", new LoginForm());
-//		return "login";
-//
-//	}
-
-//	  @GetMapping("/admin/employee/{id}")
-//	    public String employeeDashboard(@PathVariable Integer userId, Model model) {
-//		  Optional<AitUserDetails> findById = userDtlsRepo.findById(userId);
-//		
-//		  if(findById != null) {
-//			  
-//			  AitUserDetails aitUserDetails = findById.get();
-//			  
-//			  model.addAttribute("data", aitUserDetails);
-//			  
-//		  }
-//		
-//		
-//	        
-//	        return "empdashboard";
-//	    }
-
 }
