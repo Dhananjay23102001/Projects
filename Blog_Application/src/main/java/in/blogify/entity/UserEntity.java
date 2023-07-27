@@ -34,8 +34,6 @@ public class UserEntity {
 	
 	private String userPwd;
 	
-  //@OneToMany(mappedBy = "user",cascade=CascadeType.ALL,fetch = FetchType.EAGER)
-
 	@OneToMany(mappedBy = "user",cascade=CascadeType.REMOVE,fetch = FetchType.EAGER)
 	@JsonIgnore
 	private List<PostEntity> allPost;
